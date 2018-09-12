@@ -60,6 +60,14 @@ class TutorialPage extends React.Component {
                     <li key={i}>{req}</li>
                   ))}
                 </ul> */}
+                <h3>Walkthroughs Available</h3>
+                <ul>
+                  {Object.keys(this.props.walkthroughs.data).map((walkthrough, i) => (
+                    <li key={i}>
+                      <span>{`Name: ${walkthrough}`}</span>
+                    </li>
+                  ))}
+                </ul>
                 <h3>{t('tutorial.roles')}</h3>
                 <ul className="list-unstyled">
                   {thread.data.roles.map((role, i) => (
@@ -149,7 +157,8 @@ TutorialPage.propTypes = {
     params: PropTypes.object
   }),
   getThread: PropTypes.func,
-  thread: PropTypes.object
+  thread: PropTypes.object,
+  walkthroughs: PropTypes.object
 };
 
 TutorialPage.defaultProps = {
@@ -171,7 +180,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  ...state.threadReducers
+  ...state.threadReducers,
+  ...state.walkthroughReducers
 });
 
 const ConnectedTutorialPage = connect(
