@@ -61,13 +61,7 @@ class TutorialPage extends React.Component {
                   ))}
                 </ul> */}
                 <h3>Walkthroughs Available</h3>
-                <ul>
-                  {Object.keys(this.props.walkthroughs.data).map((walkthrough, i) => (
-                    <li key={i}>
-                      <span>{`Name: ${walkthrough}`}</span>
-                    </li>
-                  ))}
-                </ul>
+                {JSON.stringify(this.props.walkthrough.data)}
                 <h3>{t('tutorial.roles')}</h3>
                 <ul className="list-unstyled">
                   {thread.data.roles.map((role, i) => (
@@ -158,7 +152,7 @@ TutorialPage.propTypes = {
   }),
   getThread: PropTypes.func,
   thread: PropTypes.object,
-  walkthroughs: PropTypes.object
+  walkthrough: PropTypes.object
 };
 
 TutorialPage.defaultProps = {
