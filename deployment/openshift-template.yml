@@ -30,6 +30,9 @@ parameters:
   - name: ENMASSE_URL
     description: Mock URL for EnMasse. Only used if OPENSHIFT_HOST is empty
     required: false
+  - name: ROUTE_NAME
+    value: tutorial-web-app
+    required: true
 objects:
 - apiVersion: v1
   kind: DeploymentConfig
@@ -92,7 +95,7 @@ objects:
   metadata:
     labels:
       app: tutorial-web-app
-    name: tutorial-web-app
+    name: ${ROUTE_NAME}
   spec:
     tls:
       termination: edge
